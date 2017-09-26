@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block styles %}
+<style>
+.jumbotron {
+	text-align: center;
+}
+</style>
+{% endblock %}
+
+
+{% block jumbrotron %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+     <div class="jumbotron">
+     	<h1>Multi Use Web Tool</h1>
+        <p>Hi! This sample page is used as my template to demonstrate the various tasks and tools I have implemented using: python, javascript, html, and sql; as well as third party tools to help design my projects.</p>
+     </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+        <div class="col-md-4">
+          <h2>Introduction</h2>
+                        <!-- <td width="730" align="left"></td> /!-->
+                        <!--><p style="margin-left: 25px; text-align: justify;"> </!-->
+                        <td>
+                        <p>
+                            + information diffusion in social network, social media, and cybersoace<br/>
+                            + geographic information in online social media and social network<br/>
+                            + geospatial perspectives of personal and public health<br/>
+                            + GPS trajectory and exposure to physical environment<br/>
+                            + spatio-temporal analysis of big geo-data<br/>
+                            + community similarity in social network<br/>
+                            + spatial data infrastructure<br/>
+                            + geospatial web application
+                            + mobile GIS application<br/>
+                            + spatial data mining<br/>
+                            + spatial database<br/>
+                            + geo-privacy<br/>
+                            + GIScience<br/>
+                        </p>
+                        </td>
+                        <br>
+                        <hr>
+          <p><a class="btn btn-default" href="{% url 'about' %}" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-4">
+		<a href="#"><img src="http://i.imgur.com/9wtfsxJ.jpg" class="img-responsive"/></a>       </div>
+        <div class="col-md-4">
+        {% if request.user.is_authenticated %}
+        <h3>Hello {{ request.user }}</h3>
+
+        {% else %}
+         <form class="login" method="POST" action="{% url 'account_login' %}">
+         {% csrf_token %}
+
+
+
+<div id="div_id_login" class="form-group"> <label for="id_login" class="control-label  requiredField">
+                Login<span class="asteriskField">*</span> </label> <div class="controls "> <input type="text" name="login" placeholder="Username or e-mail" autofocus="autofocus" class="textinput textInput form-control" required="" id="id_login"> </div> </div> <div id="div_id_password" class="form-group"> <label for="id_password" class="control-label  requiredField">
+                Password<span class="asteriskField">*</span> </label> <div class="controls "> <input type="password" name="password" placeholder="Password" class="textinput textInput form-control" required="" id="id_password"> </div> </div> <div class="form-group"> <div id="div_id_remember" class="checkbox"> <label for="id_remember" class=""> <input type="checkbox" name="remember" class="checkboxinput" id="id_remember">
+                    Remember Me
+                </label> </div> </div>
+  <a class="btn btn-link button secondaryAction" href="{% url 'account_reset_password' %}">Forgot Password?</a>
+  <a class="btn btn-link button secondaryAction" href="{% url 'account_signup' %}">Signup</a>
+  <button class="btn btn-default primaryAction" type="submit">Sign In</button>
+</form>
+{% endif %}
+        </div>
+      </div>
+{% endblock %}
+
+
